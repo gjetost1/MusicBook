@@ -63,13 +63,13 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   User.associate = function(models) {
-    User.hasMany(models.Venue, { foreignKey: 'venue_id' });
-    User.hasMany(models.Rating, { foreignKey: 'user_id' });
-    User.hasMany(models.Booking, { foreignKey: 'user_id' });
+    // User.hasMany(models.Venue, { foreignKey: 'owner_id' });
+    // User.hasMany(models.Rating, { foreignKey: 'user_id' });
+    // User.hasMany(models.Booking, { foreignKey: 'user_id' });
   };
 
-  User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email, act, profileImg, bio } = this; // context will be the User instance
+  User.prototype.toSafeObject = function() {
+    const { id, username, email, act, profileImg, bio } = this;
     return { id, username, email, act, profileImg, bio };
   };
 

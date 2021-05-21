@@ -9,17 +9,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'Users' }
       },
       owner_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'Venues' }
       },
       confirmedDate: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         allowNull: false
       },
       createdAt: {

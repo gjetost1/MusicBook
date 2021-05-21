@@ -9,44 +9,44 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: DataTypes.STRING(30),
+        type: Sequelize.STRING(30),
         allowNull: false
       },
       owner_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'Users' }
+        // references: { model: 'Users' }
       },
       venueImg: {
-        type: DataTypes.STRING(999),
+        type: Sequelize.STRING(999),
         allowNull: false
       },
       capacity: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       venueType: {
-        type: DataTypes.STRING(20),
+        type: Sequelize.STRING(20),
         allowNull: false
       },
       pay: {
-        type: DataTypes.STRING(20),
+        type: Sequelize.STRING(20),
         allowNull: false
       },
       city: {
-        type: DataTypes.STRING(30),
+        type: Sequelize.STRING(30),
         allowNull: false
       },
       state: {
-        type: DataTypes.STRING(30),
+        type: Sequelize.STRING(30),
         allowNull: false
       },
       description: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         allowNull: false
       },
       rating: {
-        type: DataTypes.NUMERIC(3, 2),
+        type: Sequelize.NUMERIC(3, 2),
         allowNull: false,
       },
       createdAt: {

@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     name: {
       type: DataTypes.STRING(30),
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     owner_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: 'Users' }
+      // references: { model: 'Users' }
     },
     venueImg: {
       type: DataTypes.STRING(999),
@@ -50,8 +50,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Venue.associate = function(models) {
-    Venue.belongsTo(models.User, { foreignKey: 'owner_id' });
-    Venue.hasMany(models.Booking, { foreignKey: 'venue_id' });
+    // Venue.belongsTo(models.User, { foreignKey: 'owner_id' });
+    // Venue.hasMany(models.Booking, { foreignKey: 'venue_id' });
 
   };
   return Venue;
