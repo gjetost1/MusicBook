@@ -15,7 +15,7 @@ module.exports = {
       owner_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        // references: { model: 'Users' }
+        references: { model: 'Users' }
       },
       venueImg: {
         type: Sequelize.STRING(999),
