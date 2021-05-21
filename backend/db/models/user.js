@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 30],
+        len: [3, 40],
         isNotEmail(value) {
           if (Validator.isEmail(value)) {
             throw new Error('Cannot be an email.');
@@ -20,7 +20,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 256]
+        len: [3, 99]
+      },
+    },
+    act: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 40]
       },
     },
     hashedPassword: {
@@ -29,6 +36,15 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       },
+    },
+    profileImg: {
+      type: DataTypes.STRING(999),
+      validate: {
+        len: [10, 999]
+      },
+    },
+    bio: {
+      type: DataTypes.TEXT
     },
   },
   {
@@ -47,12 +63,14 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Venue, { foreignKey: 'venue_id' });
+    User.hasMany(models.Rating, { foreignKey: 'user_id' });
+    User.hasMany(models.Booking, { foreignKey: 'user_id' });
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, act, profileImg, bio } = this; // context will be the User instance
+    return { id, username, email, act, profileImg, bio };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -83,6 +101,8 @@ module.exports = (sequelize, DataTypes) => {
     const user = await User.create({
       username,
       email,
+      act,
+      profileImg: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
       hashedPassword,
     });
     return await User.scope('currentUser').findByPk(user.id);

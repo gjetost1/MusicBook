@@ -9,14 +9,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       username: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(40),
+        allowNull: false,
+        unique: true,
+      },
+      act: {
+        type: Sequelize.STRING(40),
         allowNull: false,
         unique: true,
       },
       email: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING(99),
         allowNull: false,
         unique: true,
+      },
+      bio: {
+        type: Sequelize.TEXT
+      },
+      profileImage: {
+        type: Sequelize.STRING(360)
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,
