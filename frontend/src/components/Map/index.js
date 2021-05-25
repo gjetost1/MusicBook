@@ -84,7 +84,7 @@ function MapPage() {
                 setSelected(null);
             }}>
                 <div>
-                    <h2>Venue Listing</h2>
+                    <h2>Venue Info</h2>
                     <p>Created {formatRelative(selected.time, new Date())}</p>
                 </div>
             </InfoWindow>) : null}

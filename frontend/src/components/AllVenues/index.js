@@ -4,26 +4,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getVenues} from '../../store/venues'
 
 
-export default function AllVenues(){
+export default function AllVenues() {
 
     const dispatch = useDispatch();
 
     useEffect(()=>{
-            dispatch(getVenues())
+    dispatch(getVenues())
     }, [dispatch])
 
-    const venues = useSelector(state => state.venue.venues)
+    const venue = useSelector(state => state.venue.venue)
 
-    if (!venues) {
+    if (!venue) {
         return (
-        <div>no venue?</div>
+        <div>no venue?{venue}</div>
         )
     }
 
     return (
 
         <div> venue access
-            <p>{venues}</p>
+            <p>{venue}</p>
 
 
 

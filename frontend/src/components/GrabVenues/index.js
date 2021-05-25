@@ -10,9 +10,7 @@ export default function VenueById(){
     const dispatch = useDispatch();
 
     useEffect(()=>{
-
-            dispatch(getVenueById(id))
-
+    dispatch(getVenueById(id))
     }, [dispatch, id])
 
     const venue = useSelector(state => state.venue.venue)

@@ -8,7 +8,7 @@ const load = venue => ({
 });
 
 export const getVenues = () => async (dispatch) => {
-    const res = await csrfFetch(`/api/venues`);
+    const res = await csrfFetch(`/api/search`);
 
     if (res.ok) {
         const venues = await res.json();
