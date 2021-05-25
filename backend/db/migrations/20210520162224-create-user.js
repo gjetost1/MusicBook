@@ -16,7 +16,7 @@ module.exports = {
       act: {
         type: Sequelize.STRING(40),
         allowNull: false,
-        unique: true,
+
       },
       email: {
         type: Sequelize.STRING(99),

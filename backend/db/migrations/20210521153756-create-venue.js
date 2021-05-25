@@ -41,6 +41,18 @@ module.exports = {
         type: Sequelize.STRING(30),
         allowNull: false
       },
+      street: {
+        type: Sequelize.STRING(30),
+        allowNull: false
+      },
+      lat: {
+        type: Sequelize.DECIMAL(8,6),
+        allowNull: false
+      },
+      lng: {
+        type: Sequelize.DECIMAL(9,6),
+        allowNull: false
+      },
       description: {
         type: Sequelize.TEXT,
         allowNull: false

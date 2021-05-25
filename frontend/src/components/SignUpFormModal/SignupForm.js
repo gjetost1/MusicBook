@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
-function SignupFormPage() {
+function SignupForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
@@ -25,54 +25,69 @@ function SignupFormPage() {
                 if (data && data.errors) setErrors(data.errors);
             });
         }
-        return setErrors(['Confirm Password must be the same as Password']);
+        return setErrors(['Confirm Password must be identical to password']);
     };
 
 
     return (
+        <div className='signup-form-wrapper'>
+        <span className='signup-header'>Sign up here!</span>
         <form onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
+            <div className='signup-modal-form'>
+            <div className='form-field-input'>
             <label>
                 Email
+            </label>
                 <input
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-            </label>
+            </div>
+            <div className='form-field-input'>
             <label>
                 Username
+            </label>
                 <input
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
-            </label>
+            </div>
+            <div className='form-field-input'>
             <label>
                 Password
+            </label>
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-            </label>
+            </div>
+            <div className='form-field-input'>
             <label>
                 Confirm Password
+            </label>
                 <input
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
-            </label>
-            <button type="submit">Sign Up</button>
+            </div>
+            <div className='form-field-button'>
+            <button className='signup-submit-button' type="submit">Sign Up</button>
+            </div>
+            </div>
         </form>
+        </div>
     );
 }
 
-export default SignupFormPage;
+export default SignupForm;

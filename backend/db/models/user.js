@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       },
     },
-    profileImg: {
+    profileImage: {
       type: DataTypes.STRING(999),
       validate: {
         len: [10, 999]
@@ -69,8 +69,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.prototype.toSafeObject = function() {
-    const { id, username, email, act, profileImg, bio } = this;
-    return { id, username, email, act, profileImg, bio };
+    const { id, username, email, act, profileImage, bio } = this;
+    return { id, username, email, act, profileImage, bio };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -102,7 +102,7 @@ module.exports = (sequelize, DataTypes) => {
       username,
       email,
       act,
-      profileImg: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+      profileImage: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
       hashedPassword,
     });
     return await User.scope('currentUser').findByPk(user.id);
