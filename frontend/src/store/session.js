@@ -26,8 +26,6 @@ const removeUser = () => {
 //login thunk
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
-  console.log(credential, "credential", password, "pw")
-  console.log("must be here at least")
   const response = await csrfFetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({
@@ -35,9 +33,11 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
+
   console.log(response,"res")
 
-  dispatch(setUser(response.data.user));
+  const data = await response.json()
+  dispatch(setUser(data.user));
   return response;
 };
 //restore session user thunk

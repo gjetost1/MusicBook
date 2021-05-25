@@ -10,18 +10,35 @@ export default function VenueById(){
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        if(id) {
+
             dispatch(getVenueById(id))
-        }
-    }, [dispatch, id])
+
+    }, [dispatch])
 
     const venue = useSelector(state => state.venue.venue)
+
     if (!venue) {
-        return null
+        return (
+        <div>no venue?</div>
+        )
     }
 
     return (
-        <div>{venue} hello </div>
+
+        <div> venue access
+            <p>{venue.name}</p>
+             <p>{venue.capacity}</p>
+             <p>{venue.venueType}</p>
+             <p>{venue.pay}</p>
+             <p>{venue.city}</p>
+             <p>{venue.state}</p>
+             <p>{venue.street}</p>
+             <p>{venue.description}</p>
+             <p>{venue.rating}</p>
+
+
+        </div>
+
     )
 
 

@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Map from "./components/Map";
 import GrabVenues from "./components/GrabVenues"
+import AllVenues from "./components/AllVenues"
 
 function App() {
   const dispatch = useDispatch();
@@ -19,15 +20,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-           <Route path="/">
-
-             {/* <Map /> */}
+          <Route exact path="/">
+             <Map />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
           <Route path="/venues/:id">
             <GrabVenues/>
+          </Route>
+          <Route path="/venues/">
+            <AllVenues/>
           </Route>
         </Switch>
       )}

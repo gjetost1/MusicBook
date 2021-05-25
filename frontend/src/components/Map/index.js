@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     GoogleMap,
     useLoadScript,
@@ -9,12 +9,6 @@ import './Map.css';
 import mapStyles from "./mapStyles"
 
 import {formatRelative} from 'date-fns';
-
-import GrabVenues from '../GrabVenues'
-import {getVenues} from "../../store/venues"
-// import {useDispatch} from 'react-redux'
-// getVenues()
-
 
 
 const libraries = ["places"]
@@ -33,11 +27,7 @@ const options = {
 }
 
 function MapPage() {
-    // const dispatch = useDispatch()
 
-    // useEffect(()=> {
-    //     dispatch(getVenues())
-    // },[dispatch])
 
 
     const {isLoaded, loadError} = useLoadScript({
