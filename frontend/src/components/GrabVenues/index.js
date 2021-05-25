@@ -13,7 +13,7 @@ export default function VenueById(){
 
             dispatch(getVenueById(id))
 
-    }, [dispatch])
+    }, [dispatch, id])
 
     const venue = useSelector(state => state.venue.venue)
 
