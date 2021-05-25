@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Map from "./components/Map";
+import GrabVenues from "./components/GrabVenues"
 
 function App() {
   const dispatch = useDispatch();
@@ -19,12 +20,14 @@ function App() {
       {isLoaded && (
         <Switch>
            <Route path="/">
-            <Map />
+
+             {/* <Map /> */}
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/listings/:id(\d+)">
+          <Route path="/venues/:id">
+            <GrabVenues/>
           </Route>
         </Switch>
       )}

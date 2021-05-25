@@ -1,4 +1,4 @@
-import { csrfFetch } from './csrf';
+import  csrfFetch from './csrf';
 
 const LOAD = 'venue/LOAD';
 
@@ -31,9 +31,12 @@ export const getVenueById = (id) => async (dispatch) => {
 const initialState = {};
 
 const venueReducer = (state = initialState, action) => {
+    let newState;
     switch(action.type) {
         case LOAD:
-            return action.venue;
+            newState = Object.assign({}, state);
+            newState.venue = action.venue;
+            return newState;
         default:
             return state;
     }

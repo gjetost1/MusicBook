@@ -10,6 +10,7 @@ import mapStyles from "./mapStyles"
 
 import {formatRelative} from 'date-fns';
 
+import GrabVenues from '../GrabVenues'
 import {getVenues} from "../../store/venues"
 // import {useDispatch} from 'react-redux'
 // getVenues()
@@ -98,7 +99,10 @@ function MapPage() {
                 </div>
             </InfoWindow>) : null}
         </GoogleMap>
-        <div>Im here too {}</div>
+
+            <div>Im here too {}</div>
+
+
         </div>
 
 }

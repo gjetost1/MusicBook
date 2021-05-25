@@ -7,8 +7,9 @@ import App from "./App";
 import { ModalProvider } from "./context/Modal";
 
 import configureStore from "./store";
-import { restoreCSRF, csrfFetch } from "./store/csrf";
+import csrfFetch, { restoreCSRF } from "./store/csrf";
 import * as sessionActions from "./store/session";
+import {getVenues, getVenueById} from "./store/venues"
 
 const store = configureStore();
 
@@ -18,6 +19,8 @@ if (process.env.NODE_ENV !== "production") {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;
+  window.getVenues = getVenues;
+  window.getVenueById = getVenueById;
 }
 
 function Root() {

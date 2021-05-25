@@ -1,12 +1,20 @@
-import { csrfFetch } from './csrf';
+import  csrfFetch  from './csrf';
 
 const SET_USER = 'session/setUser';
+const ADD_USER = 'session/addUser';
 const REMOVE_USER = 'session/removeUser';
 
 const setUser = (user) => {
   return {
     type: SET_USER,
     payload: user,
+  };
+};
+
+const addUser = ( user ) => {
+  return {
+      type: ADD_USER,
+      user
   };
 };
 
@@ -18,6 +26,8 @@ const removeUser = () => {
 //login thunk
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
+  console.log(credential, "credential", password, "pw")
+  console.log("must be here at least")
   const response = await csrfFetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({
@@ -25,8 +35,9 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  dispatch(setUser(data.user));
+  console.log(response,"res")
+
+  dispatch(setUser(response.data.user));
   return response;
 };
 //restore session user thunk
@@ -39,18 +50,17 @@ export const restoreUser = () => async dispatch => {
 
 //signup thunk
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password,act } = user;
+  const { username, email, password} = user;
   const response = await csrfFetch("/api/users", {
     method: "POST",
     body: JSON.stringify({
       username,
       email,
-      password,
-      act
+      password
     }),
   });
   const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(addUser(data.user));
   return response;
 };
 
@@ -75,6 +85,10 @@ const sessionReducer = (state = initialState, action) => {
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;
+      return newState;
+    case ADD_USER:
+      newState = Object.assign({}, state);
+      newState.user = action.user;
       return newState;
     default:
       return state;
