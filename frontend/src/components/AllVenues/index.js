@@ -12,18 +12,14 @@ export default function AllVenues() {
     dispatch(getVenues())
     }, [dispatch])
 
-    const venue = useSelector(state => state.venue.venue)
+    const venues = useSelector(state => state.venue.venue)
+    console.log(venues)
 
-    if (!venue) {
-        return (
-        <div>no venue?{venue}</div>
-        )
-    }
 
     return (
 
-        <div> venue access
-            <p>{venue}</p>
+        <div> All Venues
+            {venues.map(venue => <div>{venue.name}</div>)}
 
 
 

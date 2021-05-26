@@ -29,7 +29,7 @@ function App() {
           <Route path="/venues/:id">
             <GrabVenues/>
           </Route>
-          <Route path="/search">
+          <Route path="/venues">
             <AllVenues/>
           </Route>
         </Switch>
