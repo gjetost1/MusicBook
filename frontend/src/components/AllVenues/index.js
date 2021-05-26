@@ -9,7 +9,7 @@ export default function AllVenues() {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-    dispatch(getVenues())
+        dispatch(getVenues())
     }, [dispatch])
 
     const venues = useSelector(state => state.venue.venue)

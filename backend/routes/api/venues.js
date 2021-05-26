@@ -18,4 +18,29 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     return res.json(venue);
 }));
 
+//create venue
+router.post('/new', async(req, res) => {
+
+    const {
+        name,
+        owner_id,
+        venueImg,
+        capacity,
+        venueType,
+        pay,
+        city,
+        state,
+        street,
+        lat,
+        lng,
+        description,
+        rating
+    } = req.body;
+
+    const newVenue = await Venue.newVenue({  name, owner_id, venueImg, capacity, venueType, pay, city, state, street, lat, lng, description, rating })
+    return res.json({
+      newVenue,
+    });
+    });
+
 module.exports = router;

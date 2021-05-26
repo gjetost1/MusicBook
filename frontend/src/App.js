@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Map from "./components/Map";
 import GrabVenues from "./components/GrabVenues"
 import AllVenues from "./components/AllVenues"
+import NewVenue from "./components/NewVenue"
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/venues">
             <AllVenues/>
+          </Route>
+          <Route path="/venues/new">
+            <NewVenue/>
           </Route>
         </Switch>
       )}
