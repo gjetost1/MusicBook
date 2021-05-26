@@ -87,6 +87,7 @@ function MapPage() {
     if (loadError) return "error loading maps"
     if (!isLoaded) return "loading maps"
     if (!venues) return null
+
     return (<div>
         <GoogleMap
             mapContainerStyle= {mapContainerStyle}
@@ -104,12 +105,13 @@ function MapPage() {
                 <Marker
                     key={venue.id}
                     position={{ lat: parseInt(venue.lat), lng: parseInt(venue.lng)}}
-                    label={{color: 'white', fontWeight: '600', fontSize: '14px', text: `$${venue.pay}` }}
+
                     icon={{
                         url: '/pick.svg',
-                        scaledSize: new window.google.maps.Size(42, 35),
-                        origin: new window.google.maps.Point(21, 13),
-                        anchor: new window.google.maps.Point(15, 15)
+                        scaledSize: new window.google.maps.Size(20,20),
+                        labelOrigin: new window.google.maps.Point(30,30),
+                        origin: new window.google.maps.Point(0,0),
+                        anchor: new window.google.maps.Point(30,10)
                     }}
                     // animation={window.google.maps.Animation.DROP}
                     clickable={true}
@@ -117,7 +119,7 @@ function MapPage() {
 
 
 
-                >{selected.id===venue.id ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
+                >{selected && selected.id===venue.id ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
                     setSelected(null);
                 }}>
                     <div>
@@ -135,6 +137,7 @@ function MapPage() {
                     </div>
                 </InfoWindow>) : null}</Marker>
             ))}
+
             {/* click gen */}
             {/* {markers.map(marker => (
                 <Marker
@@ -150,8 +153,8 @@ function MapPage() {
                         setSelected(marker)
                     }}
                 />
-            ))} */}
-            {/* {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
+            ))}
+            {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
                 setSelected(null);
             }}>
                 <div>
