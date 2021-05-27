@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
 function SignupForm() {
+    const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
@@ -12,8 +13,7 @@ function SignupForm() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
-
-    if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) history.push('/');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,14 +30,14 @@ function SignupForm() {
 
 
     return (
-        <div className='signup-form-wrapper'>
-        <span className='signup-header'>Sign up here!</span>
+        <div>
+        <span >Sign up here</span>
         <form onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <div className='signup-modal-form'>
-            <div className='form-field-input'>
+            <div>
+            <div >
             <label>
                 Email
             </label>
@@ -48,7 +48,7 @@ function SignupForm() {
                     required
                 />
             </div>
-            <div className='form-field-input'>
+            <div>
             <label>
                 Username
             </label>
@@ -81,8 +81,8 @@ function SignupForm() {
                     required
                 />
             </div>
-            <div className='form-field-button'>
-            <button className='signup-submit-button' type="submit">Sign Up</button>
+            <div>
+            <button type="submit">Sign Up</button>
             </div>
             </div>
         </form>
