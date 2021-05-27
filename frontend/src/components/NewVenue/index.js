@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { createVenue } from '../../store/venues'
@@ -8,6 +8,10 @@ import { createVenue } from '../../store/venues'
 export default function CreateVenue() {
     const history = useHistory();
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(createVenue())
+    }, [dispatch])
 
     const [name, setName] = useState('')
     const [capacity, setCapacity] = useState(0)
@@ -20,6 +24,7 @@ export default function CreateVenue() {
     const [lng, setLng] = useState('')
     const [description, setDescription] = useState('')
     const [rating, setRating] = useState(0)
+
 
     const user_id = useSelector(state => state.session.user)
     if(!user_id) return null

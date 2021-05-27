@@ -12,7 +12,7 @@ export default function AllVenues() {
         dispatch(getRatings())
     }, [dispatch])
 
-    const ratings = useSelector(state => state.ratings.ratings)
+    const ratings = useSelector(state => state.rating.rating)
     console.log(ratings)
 
     if(!ratings) {
