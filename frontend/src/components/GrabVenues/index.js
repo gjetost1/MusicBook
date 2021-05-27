@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getVenueById, deleteVenue} from '../../store/venues'
+import './GrabVenues.css'
 
 
 
@@ -26,27 +27,30 @@ export default function VenueById(){
         )
     }
 
-    const handleDelete = async () => {
+     const handleDelete = async () => {
         await dispatch(deleteVenue(venue.id))
         history.push('/')
     }
 
     return (
 
-        <div> venue access
-            <p>{venue.name}</p>
-             <p>{venue.capacity}</p>
-             <p>{venue.venueType}</p>
-             <p>{venue.pay}</p>
-             <p>{venue.city}</p>
-             <p>{venue.state}</p>
-             <p>{venue.street}</p>
-             <p>{venue.description}</p>
-             <p>{venue.rating}</p>
+        <div> Venue Info
+            <div className='border'>
+               <br></br>
+                <p>Venue Name: {venue.name}</p>
+                <p>Capacity: {venue.capacity}</p>
+                <p>Venue Type: {venue.venueType}</p>
+                <p>Pay: ${venue.pay}</p>
+                <p>City: {venue.city}</p>
+                <p>State: {venue.state}</p>
+                <p>Street: {venue.street}</p>
+                <p>Description: {venue.description}</p>
+                <p>Rating: {venue.rating}</p>
 
-            {user.id===venue.owner_id?
-            <button onClick={handleDelete}>delete</button>:null
-        }
+                {user.id===venue.owner_id?
+                <button onClick={handleDelete}>delete</button>:null
+                }
+            </div>
         </div>
 
     )

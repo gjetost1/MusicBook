@@ -42,7 +42,6 @@ export const createVenue = (venue) => async (dispatch) => {
 
 export const editVenue = (data) => async (dispatch) => {
 
-
     const res = await csrfFetch(`/api/venues/edit/${data.id}`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},

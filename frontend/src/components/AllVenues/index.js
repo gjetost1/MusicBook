@@ -23,7 +23,9 @@ export default function AllVenues() {
         return (
 
             <div> All Venues
-                {venues.map(venue => <div>{venue.name}</div>)}
+
+
+                {venues.map(venue => <li>{venue.name}</li> )}
 
 
 

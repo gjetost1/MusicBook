@@ -39,7 +39,6 @@ export default function CreateVenue() {
         lat,
         lng,
         description,
-        owner_id: user_id.id,
         rating
     };
 

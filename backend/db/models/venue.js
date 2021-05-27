@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING(30),
-      allowNull: false
+
     },
     owner_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+
       references: { model: 'Users' }
     },
     venueImg: {
@@ -22,43 +22,43 @@ module.exports = (sequelize, DataTypes) => {
     },
     capacity: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+
     },
     venueType: {
       type: DataTypes.STRING(20),
-      allowNull: false
+
     },
     pay: {
       type: DataTypes.STRING(20),
-      allowNull: false
+
     },
     city: {
       type: DataTypes.STRING(30),
-      allowNull: false
+
     },
     state: {
       type: DataTypes.STRING(30),
-      allowNull: false
+
     },
     street: {
       type: DataTypes.STRING(30),
-      allowNull: false
+
     },
     lat: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+
     },
     lng: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+
     },
     rating: {
       type: DataTypes.NUMERIC(3, 2),
-      allowNull: false,
+
     },
   }, {});
   Venue.associate = function(models) {

@@ -33,13 +33,13 @@ function App() {
           {/* <Route path="/signup">
             <SignupFormPage />
           </Route> */}
-          <Route path="/venues/new">
+          <Route path="/venues/new" >
             <NewVenue/>
           </Route>
           <Route path="/venues/edit/:id">
             <EditVenue/>
           </Route>
-          <Route path="/venues" exact>
+          <Route path="/venues">
             <AllVenues/>
           </Route>
           <Route path="/venues/:id">
