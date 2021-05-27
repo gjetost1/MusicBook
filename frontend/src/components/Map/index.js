@@ -12,6 +12,7 @@ import {formatRelative} from 'date-fns';
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from 'react-redux';
 import { getVenues} from '../../store/venues'
+import {NavLink} from 'react-router-dom'
 
 
 const libraries = ["places"]
@@ -84,6 +85,7 @@ function MapPage() {
         mapRef.current = map;
     },[])
 
+
     if (loadError) return "error loading maps"
     if (!isLoaded) return "loading maps"
     if (!venues) return null
@@ -124,16 +126,26 @@ function MapPage() {
                 }}>
                     <div>
                         <h2>Venue Info</h2>
-                        {/* switch to ul/li */}
-                        <p>{selected.name}</p>
-                        <p>{selected.capacity}</p>
-                        <p>{selected.venueType}</p>
-                        <p>{selected.pay}</p>
-                        <p>{selected.city}</p>
-                        <p>{selected.state}</p>
-                        <p>{selected.street}</p>
-                        <p>{selected.description}</p>
-                        <p>{selected.rating}</p>
+                        <ul>
+                            <li>Name: {selected.name}</li>
+                            <li> Capacity: {selected.capacity}</li>
+                            <li>Venue Type:{selected.venueType}</li>
+                            <li>Venue Pay: ${selected.pay}</li>
+                            <li>City: {selected.city}</li>
+                            <li>State: {selected.state}</li>
+                            <li>Street: {selected.street}</li>
+                            <li>Description: {selected.description}</li>
+                            <li>Rating: {selected.rating}</li>
+
+
+                        </ul>
+                        <NavLink to={`/venues/edit/${venue.id}`}>
+                             <button>Edit</button>
+                        </NavLink>
+                        <NavLink to={`/venues/${venue.id}`}>
+                             <button>Delete</button>
+                        </NavLink>
+
                     </div>
                 </InfoWindow>) : null}</Marker>
             ))}

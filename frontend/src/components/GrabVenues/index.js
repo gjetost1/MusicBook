@@ -26,7 +26,7 @@ export default function VenueById(){
         )
     }
 
-    const handleDelete = async () => {
+     const handleDelete = async () => {
         await dispatch(deleteVenue(venue.id))
         history.push('/')
     }
