@@ -129,7 +129,7 @@ function MapPage() {
                         <ul>
                             <li>Name: {selected.name}</li>
                             <li> Capacity: {selected.capacity}</li>
-                            <li>Venue Type:{selected.venueType}</li>
+                            <li>Venue Type: {selected.venueType}</li>
                             <li>Venue Pay: ${selected.pay}</li>
                             <li>City: {selected.city}</li>
                             <li>State: {selected.state}</li>
