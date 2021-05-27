@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVenues} from '../../store/venues'
+import { getRatings} from '../../store/ratings'
 
 
 export default function AllVenues() {
@@ -9,13 +9,13 @@ export default function AllVenues() {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getVenues())
+        dispatch(getRatings())
     }, [dispatch])
 
-    const venues = useSelector(state => state.venue.venue)
-    console.log(venues)
+    const ratings = useSelector(state => state.rating.rating)
+    console.log(ratings)
 
-    if (!venues) {
+    if(!ratings) {
         return null
     } else {
 
@@ -23,7 +23,7 @@ export default function AllVenues() {
         return (
 
             <div> All Venues
-                {venues.map(venue => <div>{venue.name}</div>)}
+                {ratings.map(rating => <div>{rating.id}</div>)}
 
 
 
@@ -31,7 +31,6 @@ export default function AllVenues() {
 
         )
     }
-
 
 
 }
