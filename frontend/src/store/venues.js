@@ -2,30 +2,45 @@ import  csrfFetch from './csrf';
 
 const LOAD = 'venue/LOAD';
 const CREATE = 'venue/CREATE';
+const DELETE = 'venue/DELETE';
 
 const load = venue => ({
     type: LOAD,
     venue
 });
 
-const create = newVenue => ({
+const create = venue => ({
     type: CREATE,
-    newVenue
+    venue
 })
 
-export const createVenue = (newVenue) => async (dispatch) => {
+const deleter = () => ({
+    type: DELETE,
+
+})
+
+export const createVenue = (venue) => async (dispatch) => {
     const res = await csrfFetch(`/api/venues/new`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(newVenue)
+        body: JSON.stringify(venue)
 
     });
     if(res.ok){
-        const newVenue = await res.json();
-        dispatch(create(newVenue));
-        return newVenue;
+        const venue = await res.json();
+        dispatch(create(venue));
+        return venue;
     }
 };
+
+export const deleteVenue = (venueId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/venues/delete/${venueId}`, {
+        method: 'DELETE'
+    })
+    const venue = await res.json()
+    dispatch(deleter(venue))
+    return res;
+}
 
 export const getVenues = () => async (dispatch) => {
     const res = await csrfFetch(`/api/venues`);
@@ -37,8 +52,8 @@ export const getVenues = () => async (dispatch) => {
     };
 }
 
-export const getVenueById = (id) => async (dispatch) => {
-    const res = await csrfFetch(`/api/venues/${id}`);
+export const getVenueById = (venueId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/venues/${venueId}`);
 
     if (res.ok) {
         const venue = await res.json();
@@ -60,6 +75,10 @@ const venueReducer = (state = initialState, action) => {
         case CREATE:
             newState = Object.assign({}, state);
             newState.newVenue = action.newVenue;
+            return newState;
+        case DELETE:
+            newState = Object.assign({}, state);
+            newState.venue = null;
             return newState;
         default:
             return state;

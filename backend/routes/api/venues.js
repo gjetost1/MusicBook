@@ -41,6 +41,17 @@ router.post('/new', async(req, res) => {
     return res.json({
       newVenue,
     });
-    });
+});
+
+//delete venue
+router.delete('/delete/:id(\\d+)', asyncHandler(async (req, res) => {
+    const venueId = parseInt(req.params.id, 10);
+    const venue = await Venue.findByPk(venueId, { include: [User] });
+
+    await venue.destroy()
+
+    const venues = await Venue.findAll()
+    res.json(venues)
+}))
 
 module.exports = router;

@@ -8,6 +8,9 @@ import Map from "./components/Map";
 import GrabVenues from "./components/GrabVenues"
 import AllVenues from "./components/AllVenues"
 import NewVenue from "./components/NewVenue"
+import GrabRatings from "./components/GrabRatings"
+import AllRatings from "./components/AllRatings"
+import NewRating from "./components/NewRating"
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +38,15 @@ function App() {
           </Route>
           <Route path="/venues/new">
             <NewVenue/>
+          </Route>
+          <Route path="/ratings/:id">
+            <GrabRatings/>
+          </Route>
+          <Route path="/ratings">
+            <AllRatings/>
+          </Route>
+          <Route path="/ratings/new">
+            <NewRating/>
           </Route>
         </Switch>
       )}

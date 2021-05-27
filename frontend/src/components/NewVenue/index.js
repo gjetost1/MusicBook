@@ -44,42 +44,41 @@ export default function CreateVenue() {
         e.preventDefault();
        let createVenue = await dispatch(createVenue(data))
 
-        history.push(`/venues/${createVenue.newVenue.id}`)
+        history.push(`/venues/${createVenue.venue.id}`)
     }
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
             <label for="name">Name:</label>
-            <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}></input>
+            <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
 
             <label for="capacity">Capacity:</label>
-            <input type="text" id="capacity" onChange={(e) => setCapacity(e.target.value)} value={capacity}></input>
-
+            <input type="text" id="capacity" onChange={(e) => setCapacity(e.target.value)} value={capacity}/>
             <label for="venueType">Venue Type:</label>
-            <input type="text" id="venueType" onChange={(e) => setVenueType(e.target.value)} value={venueType}></input>
+            <input type="text" id="venueType" onChange={(e) => setVenueType(e.target.value)} value={venueType}/>
 
             <label for="pay">Pay:</label>
-            <input type="text" id="coordinateY" onChange={(e) => setPay(e.target.value)} value={pay}></input>
+            <input type="text" id="coordinateY" onChange={(e) => setPay(e.target.value)} value={pay}/>
 
             <label for="city">City:</label>
-            <input type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city}></input>
+            <input type="text" id="city" onChange={(e) => setCity(e.target.value)} value={city}/>
 
             <label for="state">State:</label>
-            <input type="text" id="state" onChange={(e) => setState(e.target.value)} value={state}></input>
+            <input type="text" id="state" onChange={(e) => setState(e.target.value)} value={state}/>
 
             <label for="street">Street Address:</label>
-            <input type="text" id="street" onChange={(e) => setStreet(e.target.value)} value={street}></input>
+            <input type="text" id="street" onChange={(e) => setStreet(e.target.value)} value={street}/>
 
             <label for="lat">Latitude:</label>
-            <input type="text" id="lat" onChange={(e) => setLat(e.target.value)} value={lat}></input>
+            <input type="text" id="lat" onChange={(e) => setLat(e.target.value)} value={lat}/>
 
             <label for="lng">Longitude:</label>
-            <input type="text" id="lng" onChange={(e) => setLng(e.target.value)} value={lng}></input>
+            <input type="text" id="lng" onChange={(e) => setLng(e.target.value)} value={lng}/>
 
             <label for="description">Description:</label>
-            <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description}></textarea>
+            <textarea id="description" onChange={(e) => setDescription(e.target.value)} value={description} />
 
             <label for="rating">Rating:</label>
-            <input type="text" id="rating" onChange={(e) => setRating(e.target.value)} value={rating}></input>
+            <input type="text" id="rating" onChange={(e) => setRating(e.target.value)} value={rating} />
 
             <button type="submit">Submit</button>
 
