@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editVenue, getVenueById } from '../../store/venues';
 import { useHistory, useParams } from 'react-router-dom';
 
+import './EditVenue.css';
+
 export default function EditVenue() {
     const {id} = useParams()
     const dispatch = useDispatch();

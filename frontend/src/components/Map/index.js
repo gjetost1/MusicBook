@@ -93,7 +93,7 @@ function MapPage() {
     return (<div>
         <GoogleMap
             mapContainerStyle= {mapContainerStyle}
-            zoom={10}
+            zoom={8}
             center= {center}
             options = {options}
             onClick={onMapClick}
@@ -124,7 +124,7 @@ function MapPage() {
                 >{selected && selected.id===venue.id ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
                     setSelected(null);
                 }}>
-                    <div>
+                    <div id="venue_container" className= "venue_container">
                         <h2>Venue Info</h2>
                         <ul>
                             <li>Name: {selected.name}</li>
@@ -175,8 +175,6 @@ function MapPage() {
                 </div>
             </InfoWindow>) : null} */}
         </GoogleMap>
-
-            <div>Im here too {}</div>
 
 
         </div>)
