@@ -42,15 +42,24 @@ router.post('/new', asyncHandler (async(req, res) => {
     });
 }));
 
+//edit venue
+router.patch('/edit/:id', asyncHandler(async (req, res)=>{
+    const venueId = parseInt(req.params.id, 10);
+
+    const venueToEdit = await Venue.findByPk(venueId, { include: [User] })
+
+    await venueToEdit.update(req.body)
+    return res.json(venueToEdit)
+}))
+
 //delete venue
 router.delete('/delete/:id(\\d+)', asyncHandler(async (req, res) => {
     const venueId = parseInt(req.params.id, 10);
-    const venue = await Venue.findByPk(venueId, { include: [User] });
+    const venueToDelete = await Venue.findByPk(venueId);
 
-    await venue.destroy()
+    await venueToDelete.destroy()
 
-    const venues = await Venue.findAll()
-    res.json(venues)
+    return res.json(venueId)
 }))
 
 module.exports = router;

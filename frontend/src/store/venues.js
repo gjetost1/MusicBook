@@ -3,6 +3,7 @@ import  csrfFetch from './csrf';
 const LOAD = 'venue/LOAD';
 const CREATE = 'venue/CREATE';
 const DELETE = 'venue/DELETE';
+const EDIT = 'venue/EDIT';
 
 const load = venue => ({
     type: LOAD,
@@ -14,9 +15,15 @@ const create = venue => ({
     venue
 })
 
-const deleter = () => ({
+const deleter = (venueId) => ({
     type: DELETE,
+    venueId
 
+})
+
+const edit = (venue) => ({
+    type: EDIT,
+    venue
 })
 
 export const createVenue = (venue) => async (dispatch) => {
@@ -33,12 +40,29 @@ export const createVenue = (venue) => async (dispatch) => {
     }
 };
 
+export const editVenue = (data) => async (dispatch) => {
+
+
+    const res = await csrfFetch(`/api/venues/edit/${data.id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+
+
+    });
+    if (res.ok) {
+        const venue = await res.json();
+        dispatch(edit(venue));
+        return venue;
+    };
+};
+
 export const deleteVenue = (venueId) => async (dispatch) => {
     const res = await csrfFetch(`/api/venues/delete/${venueId}`, {
         method: 'DELETE'
     })
-    const venue = await res.json()
-    dispatch(deleter(venue))
+    const data = await res.json()
+    dispatch(deleter(venueId))
     return res;
 }
 
@@ -78,7 +102,7 @@ const venueReducer = (state = initialState, action) => {
             return newState;
         case DELETE:
             newState = Object.assign({}, state);
-            newState.venue = null;
+            newState.venue = [];
             return newState;
         default:
             return state;

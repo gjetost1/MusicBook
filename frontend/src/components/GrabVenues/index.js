@@ -1,13 +1,16 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
-import { getVenueById} from '../../store/venues'
+import { useParams, useHistory } from 'react-router-dom';
+import { getVenueById, deleteVenue} from '../../store/venues'
+
+
 
 
 export default function VenueById(){
     const { id } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(()=>{
     dispatch(getVenueById(id))
@@ -15,10 +18,17 @@ export default function VenueById(){
 
     const venue = useSelector(state => state.venue.venue)
 
-    if (!venue) {
+    const user = useSelector(state => state.session.user)
+
+    if (!venue || !user) {
         return (
         <div>no venue?</div>
         )
+    }
+
+    const handleDelete = async () => {
+        await dispatch(deleteVenue(venue.id))
+        history.push('/')
     }
 
     return (
@@ -34,7 +44,9 @@ export default function VenueById(){
              <p>{venue.description}</p>
              <p>{venue.rating}</p>
 
-
+            {user.id===venue.owner_id?
+            <button onClick={handleDelete}>delete</button>:null
+        }
         </div>
 
     )

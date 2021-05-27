@@ -8,9 +8,12 @@ import Map from "./components/Map";
 import GrabVenues from "./components/GrabVenues"
 import AllVenues from "./components/AllVenues"
 import NewVenue from "./components/NewVenue"
+import EditVenue from "./components/EditVenue"
+
 import GrabRatings from "./components/GrabRatings"
 import AllRatings from "./components/AllRatings"
 import NewRating from "./components/NewRating"
+
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +36,10 @@ function App() {
           <Route path="/venues/new">
             <NewVenue/>
           </Route>
-          <Route path="/venues">
+          <Route path="/venues/edit/:id">
+            <EditVenue/>
+          </Route>
+          <Route path="/venues" exact>
             <AllVenues/>
           </Route>
           <Route path="/venues/:id">
