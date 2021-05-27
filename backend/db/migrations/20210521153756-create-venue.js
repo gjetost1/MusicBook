@@ -19,7 +19,7 @@ module.exports = {
       },
       venueImg: {
         type: Sequelize.STRING(999),
-        allowNull: false
+        allowNull: true
       },
       capacity: {
         type: Sequelize.INTEGER,

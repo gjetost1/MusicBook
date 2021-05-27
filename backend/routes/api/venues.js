@@ -19,12 +19,11 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 //create venue
-router.post('/new', async(req, res) => {
+router.post('/new', asyncHandler (async(req, res) => {
 
     const {
         name,
         owner_id,
-        venueImg,
         capacity,
         venueType,
         pay,
@@ -37,11 +36,11 @@ router.post('/new', async(req, res) => {
         rating
     } = req.body;
 
-    const newVenue = await Venue.newVenue({  name, owner_id, venueImg, capacity, venueType, pay, city, state, street, lat, lng, description, rating })
+    const venue = await Venue.create( req.body )
     return res.json({
-      newVenue,
+     venue,
     });
-});
+}));
 
 //delete venue
 router.delete('/delete/:id(\\d+)', asyncHandler(async (req, res) => {

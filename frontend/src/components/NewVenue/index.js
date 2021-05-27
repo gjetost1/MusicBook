@@ -3,15 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { createVenue } from '../../store/venues'
+import './NewVenue.css'
 
 
 export default function CreateVenue() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-        dispatch(createVenue())
-    }, [dispatch])
 
     const [name, setName] = useState('')
     const [capacity, setCapacity] = useState(0)
@@ -47,12 +45,13 @@ export default function CreateVenue() {
 
     async function handleSubmit(e){
         e.preventDefault();
-       let createVenue = await dispatch(createVenue(data))
+       let createdVenue = await dispatch(createVenue(data))
 
-        history.push(`/venues/${createVenue.venue.id}`)
+        history.push(`/venues/${createdVenue.venue.id}`)
     }
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
+            <p>New Venue Form</p>
             <label for="name">Name:</label>
             <input type="text" id="name" onChange={(e) => setName(e.target.value)} value={name}/>
 
