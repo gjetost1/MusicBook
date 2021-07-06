@@ -31,6 +31,10 @@
     "sequelize": "^5.22.4",
     "sequelize-cli": "^5.5.1"
   },
+  "engines": {
+    "node": "14.17.1",
+    "npm": "7.19.1"
+  },
   "devDependencies": {
     "dotenv-cli": "^4.0.0",
     "nodemon": "^2.0.7"
